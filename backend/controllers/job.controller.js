@@ -100,3 +100,65 @@ export const getAdminJobs = async (req, res) => {
         console.log(error);
     }
 }
+
+export const updateJob = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { 
+            title, 
+            description, 
+            requirements, 
+            salary, 
+            location, 
+            jobType, 
+            experience, 
+            position, 
+            companyId 
+        } = req.body;
+
+        // Handle requirements - it might be an array or a string
+        let requirementsArray = requirements;
+        
+        // If requirements is a string, split it into array
+        if (typeof requirements === 'string') {
+            requirementsArray = requirements.split(',').map(req => req.trim()).filter(req => req !== '');
+        }
+        
+        // If requirements is already an array, ensure it's properly formatted
+        if (Array.isArray(requirementsArray)) {
+            requirementsArray = requirementsArray.map(req => typeof req === 'string' ? req.trim() : req).filter(req => req !== '');
+        }
+
+        const updatedJob = await Job.findByIdAndUpdate(
+            id,
+            {
+                title,
+                description,
+                requirements: requirementsArray,
+                salary,
+                location,
+                jobType,
+                experienceLevel: experience,
+                position,
+                company: companyId
+            },
+            { new: true, runValidators: true }
+        ).populate('company', 'name');
+
+        if (!updatedJob) {
+            return res.status(404).json({
+                success: false,
+                message: "Job not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Job updated successfully",
+            job: updatedJob
+        });
+
+    } catch (error) {
+        next(error);
+    }
+};

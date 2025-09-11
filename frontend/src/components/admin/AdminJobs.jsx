@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../shared/Navbar';
 import { Input } from '../ui/input';
-import { Button } from '../ui/button'; 
-import { useNavigate } from 'react-router-dom'; 
-import { useDispatch, useSelector } from 'react-redux'; 
+import { Button } from '../ui/button';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import AdminJobsTable from './AdminJobsTable';
 import useGetAllAdminJobs from '@/hooks/useGetAllAdminJobs';
 import { setSearchJobByText } from '@/redux/jobSlice';
 import EmailModal from "./EmailModal";
 import useSendEmail from '@/hooks/useSendEmail';
 import { toast } from 'react-hot-toast';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Mail, PlusCircle } from 'lucide-react';
 
 const AdminJobs = () => {
   useGetAllAdminJobs();
@@ -41,31 +43,42 @@ const AdminJobs = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen">
       <Navbar />
-      <div className='max-w-6xl mx-auto my-10'>
-        <div className='flex items-center justify-between my-5'>
-          <Input
-            className="w-80"
-            placeholder="Filter jobs by title, company, or role"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <div className="flex gap-2">
-            <Button 
-              variant="outline" 
-              onClick={() => openEmailModal(null)}
-              disabled={loading}
-            >
-              {loading ? 'Sending...' : 'Send Bulk Email'}
-            </Button>
-            <Button onClick={() => navigate("/admin/jobs/create")}>
-              + New Job
-            </Button>
-          </div>
-        </div>
-        
-        <AdminJobsTable onSendEmail={openEmailModal} />
+      <div className='container mx-auto py-12'>
+        <Card className="shadow-lg">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle className="text-2xl font-bold text-gray-800">
+              Job Listings
+            </CardTitle>
+            <div className="flex gap-4">
+              <Button
+                variant="outline"
+                onClick={() => openEmailModal(null)}
+                disabled={loading}
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                {loading ? 'Sending...' : 'Send Bulk Email'}
+              </Button>
+              <Button onClick={() => navigate("/admin/jobs/create")}>
+                <PlusCircle className="mr-2 h-4 w-4" />
+                New Job
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className='mb-6'>
+              <Input
+                className="w-full md:w-96"
+                placeholder="Filter jobs by title, company, or role"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </div>
+            
+            <AdminJobsTable onSendEmail={openEmailModal} />
+          </CardContent>
+        </Card>
 
         <EmailModal
           open={emailModalOpen}

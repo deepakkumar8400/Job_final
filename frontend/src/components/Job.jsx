@@ -5,9 +5,8 @@ import { Avatar, AvatarImage } from './ui/avatar'
 import { Badge } from './ui/badge'
 import { useNavigate } from 'react-router-dom'
 
-const Job = ({job}) => {
+const Job = ({ job }) => {
     const navigate = useNavigate();
-    // const jobId = "lsekdhjgdsnfvsdkjf";
 
     const daysAgoFunction = (mongodbTime) => {
         const createdAt = new Date(mongodbTime);
@@ -45,8 +44,9 @@ const Job = ({job}) => {
                 <Badge className={'text-[#7209b7] font-bold'} variant="ghost">{job?.salary}LPA</Badge>
             </div>
             <div className='flex items-center gap-4 mt-4'>
-                <Button onClick={()=> navigate(`/description/${job?._id}`)} variant="outline">Details</Button>
-                <Button className="bg-[#7209b7]">Save For Later</Button>
+                <Button onClick={() => navigate(`/description/${job?._id}`)} className="w-full bg-[#7209b7] hover:bg-[#5f32ad]">
+                    View Details
+                </Button>
             </div>
         </div>
     )
