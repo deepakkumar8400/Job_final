@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: '',
+  origin: 'https://job-final1233333333333.onrender.com',
   credentials: true
 };
 
@@ -198,4 +198,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running at port ${PORT}`);
 
 });
+
 
