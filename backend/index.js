@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: 'https://job-final-seven.vercel.app',
+  origin: '',
   credentials: true
 };
 
@@ -198,3 +198,4 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running at port ${PORT}`);
 
 });
+
