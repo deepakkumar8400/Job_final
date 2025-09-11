@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { User } from '../models/user.model.js';
 import { TempUser } from '../models/TempUser.js'; // Add this import
-import getDataUri from '../utils/dataUri.js';
+import getDataUri from '../utils/datauri.js';
 import cloudinary from 'cloudinary';
 import transporter from '../config/nodemailer.js';
 import { generateOTP, setOTPExpiration } from '../utils/otpUtils.js';
@@ -456,3 +456,4 @@ export const cancelRegistration = async (req, res) => {
         });
     }
 };
+
