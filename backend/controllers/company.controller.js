@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Company } from "../models/company.model.js";
 import cloudinary from "../utils/cloudinary.js";
-import getDataUri from '../utils/dataUri.js';
+import getDataUri from '../utils/datauri.js';
 
 export const registerCompany = async (req, res) => {
     try {
@@ -191,3 +191,4 @@ export const deleteCompany = async (req, res) => {
     });
   }
 };
+
