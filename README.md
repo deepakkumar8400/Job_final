@@ -2,7 +2,7 @@
 
 A full-featured **Job Portal** built with the **MERN stack** to streamline job posting, application tracking, and candidate-employer interactions.  
 
-**Live Demo:** [https://dpkjob3713.onrender.com/](https://job-final-ten.vercel.app/)  
+**Live Demo:** [https://job-final-ten.vercel.app/](https://job-final-ten.vercel.app/)  
 
 ---
 
