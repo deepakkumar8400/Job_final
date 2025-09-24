@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: 'https://job-final-pi.vercel.app/',
+  origin: 'https://job-final-ten.vercel.app/',
   credentials: true
 };
 
@@ -198,6 +198,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running at port ${PORT}`);
 
 });
+
 
 
 
