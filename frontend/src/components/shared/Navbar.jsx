@@ -72,7 +72,7 @@ const Navbar = () => {
                     <div className='bg-gradient-to-r from-[#6A38C2] to-[#F83002] p-1.5 rounded-md'>
                         <Briefcase className='text-white' size={20} />
                     </div>
-                    <h1 className='text-2xl font-bold'>Job<span className='text-[#F83002]'>Portal</span></h1>
+                    <h1 className='text-2xl font-bold'>Jo00b<span className='text-[#F83002]'>Portal</span></h1>
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -248,5 +248,6 @@ const Navbar = () => {
         </div>
     );
 };
+
 
 export default Navbar;
